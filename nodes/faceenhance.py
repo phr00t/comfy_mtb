@@ -193,6 +193,10 @@ class MTB_RestoreFace:
         save_tmp_steps,
         preserve_alpha: bool = False,
     ) -> torch.Tensor:
+        
+        if weight <= 0:
+            return image
+        
         pimage = tensor2np(image)[0]
         width, height = pimage.shape[1], pimage.shape[0]
         source_img = cv2.cvtColor(np.array(pimage), cv2.COLOR_RGB2BGR)
